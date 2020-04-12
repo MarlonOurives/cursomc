@@ -1,5 +1,8 @@
 package com.marlonourives.cursomc.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -8,8 +11,6 @@ import com.marlonourives.cursomc.domain.Categoria;
 import com.marlonourives.cursomc.repositories.CategoriaRepository;
 import com.marlonourives.cursomc.services.exceptions.DataIntegrityException;
 import com.marlonourives.cursomc.services.exceptions.ObjectNotFoundException;
-
-import java.util.Optional;
 
 @Service
 public class CategoriaService {
@@ -42,5 +43,9 @@ public class CategoriaService {
 		catch (DataIntegrityViolationException e) {
 			throw new DataIntegrityException("Não é possível excluir uma categoria que possui produto");
 		}
+	}
+	
+	public List<Categoria> findAll(){
+		return repo.findAll();
 	}
 }
